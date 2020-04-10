@@ -58,7 +58,6 @@ const User = mongoose.model('User', {
 //     console.log('Error!', error)
 // })
 
-
 const Task = mongoose.model('Tasks', {
     description: {
         type: String,
@@ -70,12 +69,10 @@ const Task = mongoose.model('Tasks', {
         default: false
     }
 })
-
 const task1 = new Task({
     description: 'Learn React',
     completed: false
 })
-
 task1.save().then(() => {
     console.log(task1)
 }).catch((error) => {
