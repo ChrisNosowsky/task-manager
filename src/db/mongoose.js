@@ -46,18 +46,6 @@ const User = mongoose.model('User', {
     }
 })
 
-// const me =  new User ({
-//     name: '    chris   ',
-//     email: ' CHRISNOSOWSKY@GMAIL.COM   ',
-//     password: 'PaSsayeee   '
-// })
-
-// me.save().then(() => {
-//     console.log(me)
-// }).catch((error) => {
-//     console.log('Error!', error)
-// })
-
 const Task = mongoose.model('Tasks', {
     description: {
         type: String,
