@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-
 const taskSchema = new mongoose.Schema({
     description: {
         type: String,
@@ -12,7 +11,6 @@ const taskSchema = new mongoose.Schema({
         default: false
     }
 })
-
 taskSchema.pre('save', async function (next) {
     const task = this
 
