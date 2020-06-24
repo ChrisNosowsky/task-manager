@@ -34,15 +34,15 @@ app.listen(port, () => {
 })
 
 
-const main = async () => {
-    // const task = await Task.findById('5ef2b54d26444f23c8c906da')
-    // await task.populate('owner').execPopulate()
-    // console.log(task.owner)
+// const main = async () => {
+//     // const task = await Task.findById('5ef2b54d26444f23c8c906da')
+//     // await task.populate('owner').execPopulate()
+//     // console.log(task.owner)
 
-    const user = await User.findById('5ef2b53826444f23c8c906d6')
-    await user.populate('tasks').execPopulate()
-    console.log(user.tasks)
+//     const user = await User.findById('5ef2b53826444f23c8c906d6')
+//     await user.populate('tasks').execPopulate()
+//     console.log(user.tasks)
 
-}
+// }
 
-main()
+// main()
