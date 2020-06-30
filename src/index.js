@@ -18,9 +18,6 @@ const upload = multer({
             return cb(new Error('Please upload a PDF'))
         }
         cb(undefined, true)
-        // cb(new Error('file must be a PDF'))
-        // cb(undefined, true)
-        // cb(undefined, false)
     }
 })
 
