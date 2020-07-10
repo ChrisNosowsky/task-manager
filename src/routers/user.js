@@ -5,7 +5,6 @@ const auth = require('../middleware/auth')
 const multer = require('multer')
 
 const upload = multer({
-    dest: 'avatars',
     limits: {
         fileSize: 1000000
     },
@@ -103,9 +102,19 @@ router.delete('/users/me', auth, async (req, res) => {
     }
 })
 
-router.post('/users/me/avatar', upload.single('avatars'), (req, res) => {
+router.post('/users/me/avatar', auth, upload.single('avatars'), async (req, res) => {
+    req.user.avatar = req.file.buffer
+    await req.user.save()
     res.send()
 },(error, req, res, next) => {
+    res.status(400).send({error: error.message})
+})
+
+router.delete('/users/me/avatar', auth, async (req, res) => {
+    req.user.avatar = undefined
+    await req.user.save()
+    res.send()
+}, (error, req, res, next) => {
     res.status(400).send({error: error.message})
 })
 
