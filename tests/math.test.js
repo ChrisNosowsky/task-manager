@@ -20,6 +20,7 @@ test('Should convert 0 C to 32 F', () => {
     expect(temp).toBe(32)
 })
 
+
 //
 // Why test?
 // - Saves time
