@@ -28,6 +28,17 @@ test('should sign up a new user', async () => {
     expect(user.password).not.toBe('Admin1234!')
 })
 
+test('should not signup user with invalid password', async () => {
+    await request(app)
+    .post('/users/')
+    .send({
+        name: 'ChrisN',
+        email: 'nosowsky2@gmail.com',
+        password: 'i'
+    })
+    .expect(400)
+})
+
 test('should login existing user', async () => {
     const response = await request(app).post('/users/login').send({
         email: userOne.email,
@@ -108,6 +119,15 @@ test('should not update invalid user fields', async () => {
     .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
     .send({
         location: "East Lansing"
+    })
+    .expect(400)
+})
+
+test('should not update user with invalid password', async () => {
+    await request(app).patch('/users/me')
+    .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+    .send({
+        password: 'in'
     })
     .expect(400)
 })
